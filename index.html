@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ayaiko | UI Designer</title>
+    <meta
+      name="description"
+      content="Ayaiko is a UI designer crafting polished game interfaces, design systems, and interactive product experiences."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <canvas id="cosmic-canvas" aria-hidden="true"></canvas>
+
+    <!-- Parallax Planetary Environment -->
+    <div id="parallax-environment" aria-hidden="true">
+      <div class="parallax-layer layer-bg" data-speed="0.05">
+        <div class="planet planet-gas-giant"></div>
+        <div class="planet planet-frozen"></div>
+      </div>
+      <div class="parallax-layer layer-mid" data-speed="0.15">
+        <div class="planet planet-ringed">
+          <div class="ring"></div>
+        </div>
+      </div>
+      <div class="parallax-layer layer-fg" data-speed="0.25">
+        <div class="planet planet-hologram"></div>
+      </div>
+    </div>
+
+    <div class="site-depth" aria-hidden="true">
+      <div class="depth-grid"></div>
+      <div class="depth-scanline"></div>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <div id="cursor-outline" class="cursor-hidden" aria-hidden="true"></div>
+    <div id="cursor-dot" class="cursor-hidden" aria-hidden="true"></div>
+
+    <nav class="glass-nav" aria-label="Primary navigation">
+      <div class="nav-container">
+        <a href="#hero" class="brand-logo" aria-label="Ayaiko home">Ayaiko</a>
+        <div class="nav-links" aria-label="Page sections">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#portfolio">Work</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <a href="#portfolio" class="btn btn-primary nav-cta" data-magnetic>View Work</a>
+      </div>
+    </nav>
+
+    <main>
+      <section id="hero" class="hero-section" data-section>
+        <div class="hero-copy">
+          <p class="eyebrow reveal-item">UI Designer • Roblox Interfaces • Visual Systems</p>
+          <h1 class="hero-title reveal-item">
+            Ayaiko creates game UI with depth, polish, and motion.
+          </h1>
+          <p class="hero-subtitle reveal-item">
+            Premium interfaces for playful products: shops, reward loops, dashboards, progression screens, and systems that feel responsive from the first click.
+          </p>
+          <div class="hero-actions reveal-item">
+            <a href="#portfolio" class="btn btn-primary" data-magnetic>Explore Portfolio</a>
+            <a href="#contact" class="btn btn-secondary" data-magnetic>Add on Discord</a>
+          </div>
+          <div class="hero-stats reveal-item" aria-label="Portfolio highlights">
+            <div>
+              <strong>15</strong>
+              <span>Featured screens</span>
+            </div>
+            <div>
+              <strong>3D</strong>
+              <span>Motion-ready presentation</span>
+            </div>
+            <div>
+              <strong>UI</strong>
+              <span>Built for games and tools</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-camera" aria-label="Featured interface previews">
+          <div class="stage-rim"></div>
+          <div class="interface-stage" data-tilt-card>
+            <article class="interface-layer layer-one" data-layer-depth="0.42">
+              <img src="./public/Ui Work/Shop.webp" alt="Premium Shop interface preview" />
+              <div class="interface-label">
+                <span>Storefront</span>
+                <strong>Premium Shop</strong>
+              </div>
+            </article>
+            <article class="interface-layer layer-two" data-layer-depth="0.72">
+              <img src="./public/Ui Work/BrainrotTrader.webp" alt="Trader Hub interface preview" />
+              <div class="interface-label">
+                <span>Trading</span>
+                <strong>Trader Hub</strong>
+              </div>
+            </article>
+            <article class="interface-layer layer-three" data-layer-depth="1.05">
+              <img src="./public/Ui Work/Daily Rewards.webp" alt="Daily Rewards interface preview" />
+              <div class="interface-label">
+                <span>Retention</span>
+                <strong>Daily Rewards</strong>
+              </div>
+            </article>
+          </div>
+          <div class="hero-readout">
+            <span>Scroll depth</span>
+            <strong id="scroll-readout">0%</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="content-section about-section reveal-section" data-section>
+        <div class="container two-column">
+          <div class="section-copy">
+            <p class="eyebrow">About</p>
+            <h2 class="section-title">Interfaces shaped for fast reading and high energy.</h2>
+            <p>
+              I design UI that gives complex game systems a clear rhythm: readable hierarchy, strong component states, motion that supports feedback, and visual polish that makes each screen feel valuable.
+            </p>
+          </div>
+          <div class="process-board" aria-label="Design process">
+            <article class="process-card" data-scroll-3d data-tilt-card>
+              <span>01</span>
+              <h3>System Mapping</h3>
+              <p>Clarify the economy, actions, states, and player goals before visual work starts.</p>
+            </article>
+            <article class="process-card" data-scroll-3d data-tilt-card>
+              <span>02</span>
+              <h3>Visual Direction</h3>
+              <p>Build a distinct mood with color, depth, typography, and responsive components.</p>
+            </article>
+            <article class="process-card" data-scroll-3d data-tilt-card>
+              <span>03</span>
+              <h3>Interaction Polish</h3>
+              <p>Add hover, press, reveal, and transition states that make the interface feel alive.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="content-section skills-section reveal-section" data-section>
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Skills</p>
+            <h2 class="section-title">A compact toolkit for production UI.</h2>
+          </div>
+          <div class="skill-orbit" data-tilt-card>
+            <div class="orbit-core">
+              <strong>Ayaiko</strong>
+              <span>UI Direction</span>
+            </div>
+            <div class="orbit-ring ring-a">
+              <span>Game UI</span>
+              <span>Wireframes</span>
+              <span>Shop UX</span>
+            </div>
+            <div class="orbit-ring ring-b">
+              <span>Design Systems</span>
+              <span>Prototyping</span>
+              <span>Reward Loops</span>
+              <span>Visual Polish</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" class="content-section portfolio-section reveal-section" data-section>
+        <div class="container">
+          <div class="portfolio-top">
+            <div>
+              <p class="eyebrow">Selected Work</p>
+              <h2 class="section-title">A sharper look at recent interface systems.</h2>
+            </div>
+            <div class="filter-bar" aria-label="Filter portfolio items">
+              <button class="filter-btn is-active" type="button" data-filter="all">All</button>
+              <button class="filter-btn" type="button" data-filter="systems">Systems</button>
+              <button class="filter-btn" type="button" data-filter="commerce">Commerce</button>
+              <button class="filter-btn" type="button" data-filter="progression">Progression</button>
+            </div>
+          </div>
+
+          <div class="portfolio-grid" id="portfolio-grid">
+            <article class="portfolio-item" data-category="systems" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Admin Machine">
+              <div class="portfolio-image"><img src="./public/Ui Work/Admin Machine.webp" alt="Admin Machine interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Systems</span><h3>Admin Machine</h3><p>Control surface for high-priority server actions.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="commerce" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Trader Hub">
+              <div class="portfolio-image"><img src="./public/Ui Work/BrainrotTrader.webp" alt="Trader Hub interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Commerce</span><h3>Trader Hub</h3><p>Trading UX with clear item focus and action hierarchy.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="systems" data-scroll-3d data-tilt-card tabindex="0" aria-label="View UI Elements">
+              <div class="portfolio-image"><img src="./public/Ui Work/Buttons.webp" alt="Button design system" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Systems</span><h3>UI Elements</h3><p>Button kit with readable states and high-contrast affordances.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="systems" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Codes Input">
+              <div class="portfolio-image"><img src="./public/Ui Work/Codes.webp" alt="Codes input interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Systems</span><h3>Codes Input</h3><p>Redemption flow with focused input and result messaging.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="progression" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Daily Rewards">
+              <div class="portfolio-image"><img src="./public/Ui Work/Daily Rewards.webp" alt="Daily Rewards interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Progression</span><h3>Daily Rewards</h3><p>Retention screen built around streak clarity and reward value.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="systems" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Fuse Machine">
+              <div class="portfolio-image"><img src="./public/Ui Work/FuseMachine.webp" alt="Fuse Machine interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Systems</span><h3>Fuse Machine</h3><p>Complex crafting interaction broken into readable steps.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="commerce" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Gear Shop">
+              <div class="portfolio-image"><img src="./public/Ui Work/Gear Shop.webp" alt="Gear Shop interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Commerce</span><h3>Gear Shop</h3><p>Equipment storefront with clear item tiers and purchase focus.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="systems" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Main Index">
+              <div class="portfolio-image"><img src="./public/Ui Work/Index.webp" alt="Main Index interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Systems</span><h3>Main Index</h3><p>Navigation hub for collecting, comparing, and returning.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="commerce" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Mutate Web">
+              <div class="portfolio-image"><img src="./public/Ui Work/Mutate Website.webp" alt="Mutate Website interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Commerce</span><h3>Mutate Web</h3><p>Landing interface with product framing and conversion focus.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="commerce" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Pickaxes Showcase">
+              <div class="portfolio-image"><img src="./public/Ui Work/Pickaxes.webp" alt="Pickaxes showcase interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Commerce</span><h3>Pickaxes Showcase</h3><p>Inventory display with upgrade and comparison clarity.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="progression" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Playtime Rewards">
+              <div class="portfolio-image"><img src="./public/Ui Work/Playtime Reward.webp" alt="Playtime Reward interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Progression</span><h3>Playtime Rewards</h3><p>Timed reward track with quick scanning and claim emphasis.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="progression" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Rebirth">
+              <div class="portfolio-image"><img src="./public/Ui Work/Rebirth.webp" alt="Rebirth interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Progression</span><h3>Rebirth</h3><p>Meta progression view with consequence and upgrade framing.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="systems" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Sacrifice Tool">
+              <div class="portfolio-image"><img src="./public/Ui Work/Sacrifice Machine.webp" alt="Sacrifice Machine interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Systems</span><h3>Sacrifice Tool</h3><p>High-impact action screen with confirmation-focused layout.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="commerce" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Selling Interface">
+              <div class="portfolio-image"><img src="./public/Ui Work/Sell Brainrot.webp" alt="Selling interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Commerce</span><h3>Selling Interface</h3><p>Merchant layout with focused item value and fast action flow.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="commerce" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Premium Shop">
+              <div class="portfolio-image"><img src="./public/Ui Work/Shop.webp" alt="Premium Shop interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Commerce</span><h3>Premium Shop</h3><p>Digital storefront with strong offers and clear purchase states.</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="content-section contact-section reveal-section" data-section>
+        <div class="container contact-layout">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2 class="section-title">Add ayaiko on Discord.</h2>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2026 Ayaiko. Interface design, motion, and visual systems.</p>
+      </div>
+    </footer>
+
+    <div id="lightbox" class="lightbox" aria-modal="true" role="dialog" aria-label="Portfolio preview" tabindex="-1">
+      <div class="lightbox-backdrop"></div>
+      <div class="lightbox-content">
+        <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Close preview">&times;</button>
+        <button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous project">‹</button>
+        <img id="lightbox-image" src="" alt="Expanded portfolio preview" />
+        <button class="lightbox-nav lightbox-next" type="button" aria-label="Next project">›</button>
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+      </div>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

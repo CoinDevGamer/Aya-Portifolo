@@ -8,6 +8,8 @@
       name="description"
       content="Ayaiko is a UI designer crafting polished game interfaces, design systems, and interactive product experiences."
     />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="shortcut icon" href="./favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -50,7 +52,7 @@
         <div class="nav-links" aria-label="Page sections">
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
-          <a href="#portfolio">Work</a>
+          <a href="#portfolio">General UI</a>
           <a href="#contact">Contact</a>
         </div>
         <a href="#portfolio" class="btn btn-primary nav-cta" data-magnetic>View Work</a>
@@ -65,7 +67,7 @@
             Ayaiko creates game UI with depth, polish, and motion.
           </h1>
           <p class="hero-subtitle reveal-item">
-            Premium interfaces for playful products: shops, reward loops, dashboards, progression screens, and systems that feel responsive from the first click.
+            Premium responsive interfaces that your game needs, ranging from HUD, shops, inventories, player rewards, quests and more.
           </p>
           <div class="hero-actions reveal-item">
             <a href="#portfolio" class="btn btn-primary" data-magnetic>Explore Portfolio</a>
@@ -73,7 +75,7 @@
           </div>
           <div class="hero-stats reveal-item" aria-label="Portfolio highlights">
             <div>
-              <strong>15</strong>
+              <strong>24</strong>
               <span>Featured screens</span>
             </div>
             <div>
@@ -91,21 +93,21 @@
           <div class="stage-rim"></div>
           <div class="interface-stage" data-tilt-card>
             <article class="interface-layer layer-one" data-layer-depth="0.42">
-              <img src="./public/Ui Work/Shop.webp" alt="Premium Shop interface preview" />
+              <img src="./images/ui-work/shop.webp" alt="Premium Shop interface preview" />
               <div class="interface-label">
                 <span>Storefront</span>
                 <strong>Premium Shop</strong>
               </div>
             </article>
             <article class="interface-layer layer-two" data-layer-depth="0.72">
-              <img src="./public/Ui Work/BrainrotTrader.webp" alt="Trader Hub interface preview" />
+              <img src="./images/ui-work/gear-shop.webp" alt="Gear Shop interface preview" />
               <div class="interface-label">
-                <span>Trading</span>
-                <strong>Trader Hub</strong>
+                <span>Commerce</span>
+                <strong>Gear Shop</strong>
               </div>
             </article>
             <article class="interface-layer layer-three" data-layer-depth="1.05">
-              <img src="./public/Ui Work/Daily Rewards.webp" alt="Daily Rewards interface preview" />
+              <img src="./images/ui-work/daily-rewards.webp" alt="Daily Rewards interface preview" />
               <div class="interface-label">
                 <span>Retention</span>
                 <strong>Daily Rewards</strong>
@@ -123,9 +125,9 @@
         <div class="container two-column">
           <div class="section-copy">
             <p class="eyebrow">About</p>
-            <h2 class="section-title">Interfaces shaped for fast reading and high energy.</h2>
+            <h2 class="section-title">Interfaces shaped with thought and precision.</h2>
             <p>
-              I design UI that gives complex game systems a clear rhythm: readable hierarchy, strong component states, motion that supports feedback, and visual polish that makes each screen feel valuable.
+               I design interfaces ensuring they are clear and easy to understand, giving complex game systems a clear direction. Interfaces are designed based on your feedback, bringing your desired vision to life.
             </p>
           </div>
           <div class="process-board" aria-label="Design process">
@@ -142,7 +144,7 @@
             <article class="process-card" data-scroll-3d data-tilt-card>
               <span>03</span>
               <h3>Interaction Polish</h3>
-              <p>Add hover, press, reveal, and transition states that make the interface feel alive.</p>
+              <p> Discuss - Clarify your expectations and what I will create. 02; Design - Build unique interfaces tailored to your needs. 03; Deliver - Import designs into Studio and deliver the .rbxm file.</p>
             </article>
           </div>
         </div>
@@ -157,12 +159,14 @@
           <div class="skill-orbit" data-tilt-card>
             <div class="orbit-core">
               <strong>Ayaiko</strong>
-              <span>UI Direction</span>
+              <span>Importing</span>
             </div>
             <div class="orbit-ring ring-a">
               <span>Game UI</span>
               <span>Wireframes</span>
-              <span>Shop UX</span>
+              <span>Organised Hierarchy</span>
+              <span>Responsive Design</span>
+              <span>UX</span>
             </div>
             <div class="orbit-ring ring-b">
               <span>Design Systems</span>
@@ -178,8 +182,8 @@
         <div class="container">
           <div class="portfolio-top">
             <div>
-              <p class="eyebrow">Selected Work</p>
-              <h2 class="section-title">A sharper look at recent interface systems.</h2>
+              <p class="eyebrow">General UI</p>
+              <h2 class="section-title">Interface systems for shops, rewards, tools, and progression.</h2>
             </div>
             <div class="filter-bar" aria-label="Filter portfolio items">
               <button class="filter-btn is-active" type="button" data-filter="all">All</button>
@@ -190,78 +194,113 @@
           </div>
 
           <div class="portfolio-grid" id="portfolio-grid">
-            <article class="portfolio-item" data-category="systems" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Admin Machine">
-              <div class="portfolio-image"><img src="./public/Ui Work/Admin Machine.webp" alt="Admin Machine interface" loading="lazy" /></div>
+            <article class="portfolio-item portfolio-item-large" data-category="progression" data-tilt-card tabindex="0" aria-label="View Daily Reward UI">
+              <div class="portfolio-image"><img src="./images/general-ui/daily-reward-ui.webp" alt="Daily Reward UI interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Progression</span><h3>Daily Reward UI</h3><p>Reward screen focused on streak value, clear claiming, and fast reading.</p></div>
+            </article>
+
+            <article class="portfolio-item portfolio-item-tall" data-category="systems" data-tilt-card tabindex="0" aria-label="View Quest UI">
+              <div class="portfolio-image"><img src="./images/general-ui/quest-ui.webp" alt="Quest UI interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Systems</span><h3>Quest UI</h3><p>Objective tracking with strong task hierarchy and reward visibility.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="systems" data-tilt-card tabindex="0" aria-label="View Inventory UI">
+              <div class="portfolio-image"><img src="./images/general-ui/inventory-ui.webp" alt="Inventory UI interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Systems</span><h3>Inventory UI</h3><p>Item management screen with quick scanning and clean selection states.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="systems" data-tilt-card tabindex="0" aria-label="View Updates UI">
+              <div class="portfolio-image"><img src="./images/general-ui/updates-ui.webp" alt="Updates UI interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Systems</span><h3>Updates UI</h3><p>Patch and feature notes arranged for readable announcements.</p></div>
+            </article>
+
+            <article class="portfolio-item portfolio-item-wide" data-category="commerce" data-tilt-card tabindex="0" aria-label="View Shop UI">
+              <div class="portfolio-image"><img src="./images/general-ui/shop-ui.webp" alt="Shop UI interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Commerce</span><h3>Shop UI</h3><p>Storefront layout with offer focus, purchase clarity, and polished product framing.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="systems" data-tilt-card tabindex="0" aria-label="View Leaderboard UI">
+              <div class="portfolio-image"><img src="./images/general-ui/leaderboard-ui.webp" alt="Leaderboard UI interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Systems</span><h3>Leaderboard UI</h3><p>Ranking screen designed around comparison, placement, and quick status checks.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="commerce" data-tilt-card tabindex="0" aria-label="View Store UI">
+              <div class="portfolio-image"><img src="./images/general-ui/store-ui.webp" alt="Store UI interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Commerce</span><h3>Store UI</h3><p>Product browsing with direct calls to action and readable pricing structure.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="systems" data-tilt-card tabindex="0" aria-label="View Inventory UI Variant">
+              <div class="portfolio-image"><img src="./images/general-ui/inventory-ui-variant.webp" alt="Inventory UI variant interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Systems</span><h3>Inventory Variant</h3><p>Alternate inventory treatment with tighter item focus and equipment flow.</p></div>
+            </article>
+
+            <article class="portfolio-item portfolio-item-wide" data-category="systems" data-tilt-card tabindex="0" aria-label="View Equip Item UI">
+              <div class="portfolio-image"><img src="./images/general-ui/equip-item-ui.webp" alt="Equip Item UI interface" loading="lazy" /></div>
+              <div class="portfolio-info"><span>Systems</span><h3>Equip Item UI</h3><p>Equipment action view built around comparison, selection, and confident confirmation.</p></div>
+            </article>
+
+            <article class="portfolio-item" data-category="systems" data-tilt-card tabindex="0" aria-label="View Admin Machine">
+              <div class="portfolio-image"><img src="./images/ui-work/admin-machine.webp" alt="Admin Machine interface" loading="lazy" /></div>
               <div class="portfolio-info"><span>Systems</span><h3>Admin Machine</h3><p>Control surface for high-priority server actions.</p></div>
             </article>
 
-            <article class="portfolio-item" data-category="commerce" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Trader Hub">
-              <div class="portfolio-image"><img src="./public/Ui Work/BrainrotTrader.webp" alt="Trader Hub interface" loading="lazy" /></div>
-              <div class="portfolio-info"><span>Commerce</span><h3>Trader Hub</h3><p>Trading UX with clear item focus and action hierarchy.</p></div>
-            </article>
-
-            <article class="portfolio-item" data-category="systems" data-scroll-3d data-tilt-card tabindex="0" aria-label="View UI Elements">
-              <div class="portfolio-image"><img src="./public/Ui Work/Buttons.webp" alt="Button design system" loading="lazy" /></div>
+            <article class="portfolio-item" data-category="systems" data-tilt-card tabindex="0" aria-label="View UI Elements">
+              <div class="portfolio-image"><img src="./images/ui-work/buttons.webp" alt="Button design system" loading="lazy" /></div>
               <div class="portfolio-info"><span>Systems</span><h3>UI Elements</h3><p>Button kit with readable states and high-contrast affordances.</p></div>
             </article>
 
-            <article class="portfolio-item" data-category="systems" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Codes Input">
-              <div class="portfolio-image"><img src="./public/Ui Work/Codes.webp" alt="Codes input interface" loading="lazy" /></div>
+            <article class="portfolio-item" data-category="systems" data-tilt-card tabindex="0" aria-label="View Codes Input">
+              <div class="portfolio-image"><img src="./images/ui-work/codes.webp" alt="Codes input interface" loading="lazy" /></div>
               <div class="portfolio-info"><span>Systems</span><h3>Codes Input</h3><p>Redemption flow with focused input and result messaging.</p></div>
             </article>
 
-            <article class="portfolio-item" data-category="progression" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Daily Rewards">
-              <div class="portfolio-image"><img src="./public/Ui Work/Daily Rewards.webp" alt="Daily Rewards interface" loading="lazy" /></div>
+            <article class="portfolio-item" data-category="progression" data-tilt-card tabindex="0" aria-label="View Daily Rewards">
+              <div class="portfolio-image"><img src="./images/ui-work/daily-rewards.webp" alt="Daily Rewards interface" loading="lazy" /></div>
               <div class="portfolio-info"><span>Progression</span><h3>Daily Rewards</h3><p>Retention screen built around streak clarity and reward value.</p></div>
             </article>
 
-            <article class="portfolio-item" data-category="systems" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Fuse Machine">
-              <div class="portfolio-image"><img src="./public/Ui Work/FuseMachine.webp" alt="Fuse Machine interface" loading="lazy" /></div>
+            <article class="portfolio-item" data-category="systems" data-tilt-card tabindex="0" aria-label="View Fuse Machine">
+              <div class="portfolio-image"><img src="./images/ui-work/fuse-machine.webp" alt="Fuse Machine interface" loading="lazy" /></div>
               <div class="portfolio-info"><span>Systems</span><h3>Fuse Machine</h3><p>Complex crafting interaction broken into readable steps.</p></div>
             </article>
 
-            <article class="portfolio-item" data-category="commerce" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Gear Shop">
-              <div class="portfolio-image"><img src="./public/Ui Work/Gear Shop.webp" alt="Gear Shop interface" loading="lazy" /></div>
+            <article class="portfolio-item" data-category="commerce" data-tilt-card tabindex="0" aria-label="View Gear Shop">
+              <div class="portfolio-image"><img src="./images/ui-work/gear-shop.webp" alt="Gear Shop interface" loading="lazy" /></div>
               <div class="portfolio-info"><span>Commerce</span><h3>Gear Shop</h3><p>Equipment storefront with clear item tiers and purchase focus.</p></div>
             </article>
 
-            <article class="portfolio-item" data-category="systems" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Main Index">
-              <div class="portfolio-image"><img src="./public/Ui Work/Index.webp" alt="Main Index interface" loading="lazy" /></div>
+            <article class="portfolio-item" data-category="systems" data-tilt-card tabindex="0" aria-label="View Main Index">
+              <div class="portfolio-image"><img src="./images/ui-work/index.webp" alt="Main Index interface" loading="lazy" /></div>
               <div class="portfolio-info"><span>Systems</span><h3>Main Index</h3><p>Navigation hub for collecting, comparing, and returning.</p></div>
             </article>
 
-            <article class="portfolio-item" data-category="commerce" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Mutate Web">
-              <div class="portfolio-image"><img src="./public/Ui Work/Mutate Website.webp" alt="Mutate Website interface" loading="lazy" /></div>
+            <article class="portfolio-item" data-category="commerce" data-tilt-card tabindex="0" aria-label="View Mutate Web">
+              <div class="portfolio-image"><img src="./images/ui-work/mutate-website.webp" alt="Mutate Website interface" loading="lazy" /></div>
               <div class="portfolio-info"><span>Commerce</span><h3>Mutate Web</h3><p>Landing interface with product framing and conversion focus.</p></div>
             </article>
 
-            <article class="portfolio-item" data-category="commerce" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Pickaxes Showcase">
-              <div class="portfolio-image"><img src="./public/Ui Work/Pickaxes.webp" alt="Pickaxes showcase interface" loading="lazy" /></div>
+            <article class="portfolio-item" data-category="commerce" data-tilt-card tabindex="0" aria-label="View Pickaxes Showcase">
+              <div class="portfolio-image"><img src="./images/ui-work/pickaxes.webp" alt="Pickaxes showcase interface" loading="lazy" /></div>
               <div class="portfolio-info"><span>Commerce</span><h3>Pickaxes Showcase</h3><p>Inventory display with upgrade and comparison clarity.</p></div>
             </article>
 
-            <article class="portfolio-item" data-category="progression" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Playtime Rewards">
-              <div class="portfolio-image"><img src="./public/Ui Work/Playtime Reward.webp" alt="Playtime Reward interface" loading="lazy" /></div>
+            <article class="portfolio-item" data-category="progression" data-tilt-card tabindex="0" aria-label="View Playtime Rewards">
+              <div class="portfolio-image"><img src="./images/ui-work/playtime-reward.webp" alt="Playtime Reward interface" loading="lazy" /></div>
               <div class="portfolio-info"><span>Progression</span><h3>Playtime Rewards</h3><p>Timed reward track with quick scanning and claim emphasis.</p></div>
             </article>
 
-            <article class="portfolio-item" data-category="progression" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Rebirth">
-              <div class="portfolio-image"><img src="./public/Ui Work/Rebirth.webp" alt="Rebirth interface" loading="lazy" /></div>
+            <article class="portfolio-item" data-category="progression" data-tilt-card tabindex="0" aria-label="View Rebirth">
+              <div class="portfolio-image"><img src="./images/ui-work/rebirth.webp" alt="Rebirth interface" loading="lazy" /></div>
               <div class="portfolio-info"><span>Progression</span><h3>Rebirth</h3><p>Meta progression view with consequence and upgrade framing.</p></div>
             </article>
 
-            <article class="portfolio-item" data-category="systems" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Sacrifice Tool">
-              <div class="portfolio-image"><img src="./public/Ui Work/Sacrifice Machine.webp" alt="Sacrifice Machine interface" loading="lazy" /></div>
+            <article class="portfolio-item" data-category="systems" data-tilt-card tabindex="0" aria-label="View Sacrifice Tool">
+              <div class="portfolio-image"><img src="./images/ui-work/sacrifice-machine.webp" alt="Sacrifice Machine interface" loading="lazy" /></div>
               <div class="portfolio-info"><span>Systems</span><h3>Sacrifice Tool</h3><p>High-impact action screen with confirmation-focused layout.</p></div>
             </article>
 
-            <article class="portfolio-item" data-category="commerce" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Selling Interface">
-              <div class="portfolio-image"><img src="./public/Ui Work/Sell Brainrot.webp" alt="Selling interface" loading="lazy" /></div>
-              <div class="portfolio-info"><span>Commerce</span><h3>Selling Interface</h3><p>Merchant layout with focused item value and fast action flow.</p></div>
-            </article>
-
-            <article class="portfolio-item" data-category="commerce" data-scroll-3d data-tilt-card tabindex="0" aria-label="View Premium Shop">
-              <div class="portfolio-image"><img src="./public/Ui Work/Shop.webp" alt="Premium Shop interface" loading="lazy" /></div>
+            <article class="portfolio-item" data-category="commerce" data-tilt-card tabindex="0" aria-label="View Premium Shop">
+              <div class="portfolio-image"><img src="./images/ui-work/shop.webp" alt="Premium Shop interface" loading="lazy" /></div>
               <div class="portfolio-info"><span>Commerce</span><h3>Premium Shop</h3><p>Digital storefront with strong offers and clear purchase states.</p></div>
             </article>
           </div>
@@ -280,7 +319,7 @@
 
     <footer class="footer">
       <div class="container">
-        <p>&copy; 2026 Ayaiko. Interface design, motion, and visual systems.</p>
+        <p>&copy; 2026 ayaiko. UI designs.</p>
       </div>
     </footer>
 

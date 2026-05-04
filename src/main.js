@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTiltCards();
   initMagneticButtons();
   initCustomCursor();
+  initSkillOrbit();
   initPortfolioFilters();
   initLightbox();
 
@@ -110,19 +111,15 @@ function initScrollEngine() {
   let mouseTargetY = 0;
   let mouseX = 0;
   let mouseY = 0;
+  let rafId = 0;
 
-  if (hasFinePointer && !prefersReducedMotion) {
-    window.addEventListener(
-      'pointermove',
-      (event) => {
-        mouseTargetX = (event.clientX / window.innerWidth - 0.5) * 2;
-        mouseTargetY = (event.clientY / window.innerHeight - 0.5) * 2;
-      },
-      { passive: true },
-    );
-  }
+  const scheduleUpdate = () => {
+    if (rafId) return;
+    rafId = requestAnimationFrame(update);
+  };
 
   const update = () => {
+    rafId = 0;
     const viewportHeight = Math.max(window.innerHeight, 1);
     const maxScroll = Math.max(document.documentElement.scrollHeight - viewportHeight, 1);
 
@@ -156,10 +153,32 @@ function initScrollEngine() {
       updateDepthItems(depthItems, viewportHeight);
     }
 
-    requestAnimationFrame(update);
+    const stillMoving =
+      Math.abs(smoothScroll - targetScroll) > 0.45 ||
+      Math.abs(mouseX - mouseTargetX) > 0.002 ||
+      Math.abs(mouseY - mouseTargetY) > 0.002;
+
+    if (stillMoving) {
+      rafId = requestAnimationFrame(update);
+    }
   };
 
-  update();
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  window.addEventListener('resize', scheduleUpdate, { passive: true });
+
+  if (hasFinePointer && !prefersReducedMotion) {
+    window.addEventListener(
+      'pointermove',
+      (event) => {
+        mouseTargetX = (event.clientX / window.innerWidth - 0.5) * 2;
+        mouseTargetY = (event.clientY / window.innerHeight - 0.5) * 2;
+        scheduleUpdate();
+      },
+      { passive: true },
+    );
+  }
+
+  scheduleUpdate();
 }
 
 function updateHeroLayers(layers, heroProgress, mouseX, mouseY) {
@@ -260,9 +279,26 @@ function initCustomCursor() {
   let targetY = window.innerHeight / 2;
   let outlineX = targetX;
   let outlineY = targetY;
+  let rafId = 0;
 
   const setTransform = (element, x, y) => {
     element.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
+  };
+
+  const render = () => {
+    rafId = 0;
+    outlineX = lerp(outlineX, targetX, 0.16);
+    outlineY = lerp(outlineY, targetY, 0.16);
+    setTransform(cursorOutline, outlineX, outlineY);
+
+    if (Math.abs(outlineX - targetX) > 0.2 || Math.abs(outlineY - targetY) > 0.2) {
+      rafId = requestAnimationFrame(render);
+    }
+  };
+
+  const scheduleRender = () => {
+    if (rafId) return;
+    rafId = requestAnimationFrame(render);
   };
 
   window.addEventListener(
@@ -273,6 +309,7 @@ function initCustomCursor() {
       setTransform(cursorDot, targetX, targetY);
       cursorOutline.classList.remove('cursor-hidden');
       cursorDot.classList.remove('cursor-hidden');
+      scheduleRender();
     },
     { passive: true },
   );
@@ -293,15 +330,99 @@ function initCustomCursor() {
       document.body.classList.remove('cursor-hover');
     }
   });
+}
 
-  const render = () => {
-    outlineX = lerp(outlineX, targetX, 0.16);
-    outlineY = lerp(outlineY, targetY, 0.16);
-    setTransform(cursorOutline, outlineX, outlineY);
-    requestAnimationFrame(render);
+function initSkillOrbit() {
+  const orbit = document.querySelector('.skill-orbit');
+  if (!orbit) return;
+
+  const pills = [...orbit.querySelectorAll('.orbit-ring span')].map((pill) => {
+    const ring = pill.closest('.orbit-ring');
+    const style = window.getComputedStyle(pill);
+    const baseAngle = Number.parseFloat(style.getPropertyValue('--angle')) || 0;
+    const outerRing = ring?.classList.contains('ring-b');
+
+    return {
+      pill,
+      baseAngle,
+      direction: outerRing ? -1 : 1,
+      duration: outerRing ? 58 : 42,
+      radiusX: outerRing ? 0.39 : 0.31,
+      radiusY: outerRing ? 0.2 : 0.16,
+      width: pill.offsetWidth || 120,
+      height: pill.offsetHeight || 44,
+    };
+  });
+
+  if (!pills.length) return;
+
+  let dimensions = orbit.getBoundingClientRect();
+  let active = true;
+  let lastFrame = 0;
+  let rafId = 0;
+
+  const updateDimensions = () => {
+    dimensions = orbit.getBoundingClientRect();
+    pills.forEach((item) => {
+      item.width = item.pill.offsetWidth || 120;
+      item.height = item.pill.offsetHeight || 44;
+    });
   };
 
-  render();
+  updateDimensions();
+  window.addEventListener('resize', updateDimensions, { passive: true });
+
+  const schedulePills = () => {
+    if (rafId || prefersReducedMotion || !active) return;
+    rafId = requestAnimationFrame(placePills);
+  };
+
+  const placePills = (time = 0) => {
+    rafId = 0;
+    if (!active) return;
+
+    if (!prefersReducedMotion && time - lastFrame < 33) {
+      schedulePills();
+      return;
+    }
+
+    lastFrame = time;
+    const width = Math.max(dimensions.width, 1);
+    const height = Math.max(dimensions.height, 1);
+
+    pills.forEach(({ pill, baseAngle, direction, duration, radiusX, radiusY, width: pillWidth, height: pillHeight }) => {
+      const progress = prefersReducedMotion ? 0 : (time / 1000 / duration) * 360 * direction;
+      const angle = ((baseAngle + progress) * Math.PI) / 180;
+      const xRadius = Math.max(80, Math.min(width * radiusX, width / 2 - pillWidth * 0.62));
+      const yRadius = Math.max(52, Math.min(height * radiusY, height / 2 - pillHeight * 0.9));
+      const x = Math.cos(angle) * xRadius;
+      const y = Math.sin(angle) * yRadius;
+      const tilt = (7 * Math.PI) / 180;
+      const orbitX = x * Math.cos(tilt) - y * Math.sin(tilt);
+      const orbitY = x * Math.sin(tilt) + y * Math.cos(tilt);
+
+      pill.style.setProperty('--orbit-x', `${orbitX.toFixed(2)}px`);
+      pill.style.setProperty('--orbit-y', `${orbitY.toFixed(2)}px`);
+    });
+
+    if (!prefersReducedMotion) {
+      schedulePills();
+    }
+  };
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        active = entry.isIntersecting;
+        schedulePills();
+      },
+      { threshold: 0.05 },
+    );
+
+    observer.observe(orbit);
+  }
+
+  placePills();
 }
 
 function initPortfolioFilters() {
@@ -365,9 +486,9 @@ function initLightbox() {
 
   const getCardDetails = (card) => {
     const img = card.querySelector('img');
-    const title = card.querySelector('h3')?.textContent?.trim() || 'Portfolio project';
-    const type = card.querySelector('.portfolio-info span')?.textContent?.trim() || 'Project';
-    const description = card.querySelector('p')?.textContent?.trim() || '';
+    const title = card.dataset.title || card.querySelector('h3')?.textContent?.trim() || 'Portfolio project';
+    const type = card.dataset.type || card.querySelector('.portfolio-info span')?.textContent?.trim() || 'Project';
+    const description = card.dataset.description || card.querySelector('p')?.textContent?.trim() || '';
 
     return {
       src: img?.src || '',
@@ -471,34 +592,54 @@ function initCosmicCanvas() {
   const canvas = document.getElementById('cosmic-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  
-  let width = canvas.width = window.innerWidth;
-  let height = canvas.height = window.innerHeight;
+
+  const maxPixelRatio = 1.25;
+  let pixelRatio = Math.min(window.devicePixelRatio || 1, maxPixelRatio);
+  let width = 0;
+  let height = 0;
+  let lastFrame = 0;
   
   const stars = [];
   const shootingStars = [];
-  
-  window.addEventListener('resize', () => {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
+
+  const resizeCanvas = () => {
+    pixelRatio = Math.min(window.devicePixelRatio || 1, maxPixelRatio);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = Math.floor(width * pixelRatio);
+    canvas.height = Math.floor(height * pixelRatio);
+    ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
     createStars();
-  });
+  };
+  
+  window.addEventListener('resize', resizeCanvas, { passive: true });
 
   function createStars() {
     stars.length = 0;
-    const numStars = Math.floor((width * height) / 2000); 
+    const numStars = Math.min(360, Math.floor((width * height) / 8500)); 
     for (let i = 0; i < numStars; i++) {
       stars.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        radius: Math.random() * 1.5 + 0.1,
+        radius: Math.random() * 1.2 + 0.1,
         alpha: Math.random(),
-        speed: Math.random() * 0.05 + 0.01
+        speed: Math.random() * 0.035 + 0.006
       });
     }
   }
 
-  function drawCosmic() {
+  function drawCosmic(time = 0) {
+    if (document.hidden) {
+      requestAnimationFrame(drawCosmic);
+      return;
+    }
+
+    if (time - lastFrame < 33) {
+      requestAnimationFrame(drawCosmic);
+      return;
+    }
+
+    lastFrame = time;
     ctx.clearRect(0, 0, width, height);
     
     // Draw Nebula Gradient softly moving
@@ -526,7 +667,7 @@ function initCosmicCanvas() {
     });
 
     // Random Shooting Star
-    if (Math.random() < 0.03) {
+    if (Math.random() < 0.012) {
       shootingStars.push({
         x: Math.random() * width,
         y: 0,
@@ -558,6 +699,6 @@ function initCosmicCanvas() {
     requestAnimationFrame(drawCosmic);
   }
 
-  createStars();
-  drawCosmic();
+  resizeCanvas();
+  requestAnimationFrame(drawCosmic);
 }
